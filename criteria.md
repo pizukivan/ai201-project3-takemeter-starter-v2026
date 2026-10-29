@@ -53,61 +53,51 @@ whether you hit them:
 
 ## 1.
 
-<!-- Your criterion. It must name a number. -->
-
-
+**Overall accuracy:** accuracy on the held-out test split is at least 0.70.
 
 **Why this target:**
 
-
+I raised accuracy to 0.70 to match my per-label F1 target, since every label at 0.70 F1 already implies accuracy near 0.70. Always guessing `opinion` scores about 0.50 on my data (it is 49.5% of my rows), so 0.70 is clearly better than guessing.
 
 ---
 
 ## 2.
 
-<!-- Your criterion. -->
-
-
+**Per-label performance:** every label (`analysis`, `opinion`, `reaction`) has an F1 of at least 0.70 on the held-out test split.
 
 **Why this target:**
 
-
+A label the model gets wrong half the time isn't useful, so every label should be reliable, even though the test split is small (about 31 posts, roughly 7 `reaction`) and my smallest labels will be noisy.
 
 ---
 
 ## 3.
 
-<!-- Your criterion. -->
-
-
+**Balance:** no single label is more than 70% of the rows in `labels.csv`.
 
 **Why this target:**
 
-
+I used the project's own cap. My largest label (`opinion`) is about 49.5% of 206 rows, so I'm well under it.
 
 ---
 
 ## 4.
 
-<!-- Your criterion. -->
-
-
+**Consistency:** when a second labeler independently labels my 20 `cold` rows using only my written definitions and decision rule, at least 14 of 20 labels (70%) match mine.
 
 **Why this target:**
 
-
+Labeling `opinion` vs `analysis` is a judgment call on short, ambiguous Hacker News comments, so I picked a moderate bar for a three-label task.
 
 ---
 
 ## 5.
 
-<!-- Your criterion. -->
-
-
+**Confidence:** on the test split, the half of predictions with the highest model confidence is at least 20 percentage points more accurate than the half with the lowest confidence.
 
 **Why this target:**
 
-
+I picked this on purpose as an ambitious target. It may be hard to hit with about 31 test posts, and I'd learn from missing it.
 
 ---
 
