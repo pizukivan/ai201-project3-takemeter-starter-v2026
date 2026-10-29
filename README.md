@@ -170,20 +170,37 @@ Claude proposed my starting label definitions, pulled the comments from the HN A
 <!-- Both models on the same posts. `python baseline.py --trained results.json`
      prints this table for you. -->
 
+All scores are on the same 31 held-out posts (`test_split.csv`). The trained column is seed 42 from `results.json`. The baseline is `facebook/bart-large-mnli`, zero-shot, reading my label definitions (`baseline_results.json`).
+
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.226 | 0.484 | +0.258 |
+| Macro F1 | 0.126 | 0.217 | +0.091 |
+| F1 — `analysis` | 0.378 | 0.000 | -0.378 |
+| F1 — `opinion` | 0.000 | 0.652 | +0.652 |
+| F1 — `reaction` | 0.000 | 0.000 | 0.000 |
+
+**What my definitions were worth.** I also ran the baseline with bare label names instead of my definitions (`baseline_bare_names.json`):
+
+| Measure | Definitions | Bare names | Difference |
+|---|---|---|---|
+| Overall accuracy | 0.226 | 0.452 | -0.226 |
+| Macro F1 | 0.126 | 0.451 | -0.325 |
+| F1 — `analysis` | 0.378 | 0.471 | -0.093 |
+| F1 — `opinion` | 0.000 | 0.500 | -0.500 |
+| F1 — `reaction` | 0.000 | 0.381 | -0.381 |
+
+My definitions made the baseline worse, not better. The baseline with definitions called most posts `analysis` (recall 0.78 on `analysis`, 0 on the other two). My guess is that my long definitions make awkward hypotheses for this model, but I have not tested that. I report the definitions run as my baseline, and the bare-names run is shown above for comparison. Against the bare-names baseline, my trained model is the one that looks worse, which I note below.
 
 **What I predicted before I looked:**
-<!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
-     prediction made afterwards isn't one. -->
+
+I predicted my trained model would beat the baseline only on `opinion`, where it scored an F1 of about 0.65, and that the baseline would do better on `analysis` and `reaction`. I wrote this before seeing the baseline's numbers, but after I had already seen my unit 5 results, where the trained model predicted `opinion` for every test post.
+
 
 **What the gap actually means:**
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
+
+Against the baseline with my definitions, the trained model is ahead on accuracy (0.484 vs 0.226) and macro F1 (0.217 vs 0.126), but all of that comes from `opinion`. The trained model predicted `opinion` for all 31 test posts, so its 0.484 accuracy is just the share of `opinion` posts in the test split (15 of 31), and its F1 is 0 for `analysis` and `reaction`. Against the bare-names baseline (0.452 accuracy, macro F1 0.451, F1 above 0.38 on every label) the trained model is ahead on accuracy by one post and far behind on macro F1. So fine-tuning on about 144 examples did not teach the model my boundaries, and a general model reading only the label names recognizes all three labels better. My prediction was right on the label level: the trained model wins only on `opinion`, and the baseline wins on `analysis`, but it did not win on `reaction` with definitions (both scored 0).
+
 
 
 
