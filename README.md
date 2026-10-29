@@ -39,140 +39,124 @@
 
 ## What This Does
 
-<!-- Your community, and what your classifier sorts posts into. Three or four
-     sentences. -->
-
-
+TakeMeter sorts Hacker News comments by how much support they offer for what they say. It labels each comment `analysis` (backed by something specific and checkable), `opinion` (a claim with no verifiable support), or `reaction` (a short response with no developed claim, such as a quip or a bare question). I picked Hacker News because it is public, has a huge volume of text, and ranges from detailed technical arguments to one-word replies.
 
 ---
 
 ## Label Taxonomy
 
-<!-- Each label: a one-sentence definition and two real examples from your
-     reading. Then your decision rule for the hardest boundary.
+### `analysis`
 
-     The decision rule is worth a point on its own and it's the thing most
-     people leave out. Every taxonomy has a hardest boundary. Name yours. -->
-
-### `label_one`
-
-**Definition:**
+**Definition:** makes a point backed by something specific and checkable (a number, a named product or event, a source, or a described mechanism) that is what supports the claim.
 
 **Example 1:**
->
+> When I was in ads, Q4 was always at least half of our yearly revenue. Q1 usually came in at less than 1/4 of Q4.
 
 **Example 2:**
->
+> There's been some prior art in this space I feel that should be mentioned from k8s SIG batch in the Kueue project https://kueue.sigs.k8s.io/docs/concepts/topology_aware_scheduling/
 
-### `label_two`
+### `opinion`
 
-**Definition:**
+**Definition:** a confident claim or judgment with no verifiable support offered, including first-hand experience with unnamed or unspecific details.
 
 **Example 1:**
->
+> Text search is, but normal people dont want text search. Normies want to concierge fetch them perfect answer on first try. LLMs are really good at convincing you they just did that.
 
 **Example 2:**
->
+> I'm not gonna buy a car that doesn't have a dealer network. Being able to go in person and complain when shit hits the fan is a requirement.
+
+### `reaction`
+
+**Definition:** a short response with no developed claim: a quip, a jab, a one-word answer, agreement, or a bare question.
+
+**Example 1:**
+> What is your point?
+
+**Example 2:**
+> Spoken like a script kiddie
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `analysis` and `opinion`.
 
 **The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+A post is `analysis` only if the specific, checkable thing is what supports its claim, meaning a reader could verify the claim itself. Naming a product, company, or technology is not enough. A story or claim with nothing verifiable in it is `opinion`, including first-hand experience with unnamed or unspecific details. A question with no claim is `reaction`, and a jab that also states a real claim is `opinion`.
 
-
+I tightened this rule after stress-testing it (see How I Used AI). My first version said "names a specific checkable thing", which let "Switched to Postgres and it's been fine" count as analysis.
 
 ---
 
 ## The Dataset
 
-<!-- Where you collected from, how you labelled, your counts, and three hard
-     cases. -->
+**Where the posts came from:** public Hacker News comments from the HN Algolia API, pulled on 29 October 2026 (the newest comments plus keyword searches for startup, privacy, python, science and money). At most three comments per thread, usernames removed, whole comments kept. Comments over about 800 characters are mostly missing because they could not be pulled cleanly, so the set leans toward shorter comments, and the keyword searches skew some topics. Claude (an AI assistant) pulled and cleaned the comments for me.
 
-**Where the posts came from:**
-
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** I labelled 20 rows cold (no tools, marked `cold` in the note column). Claude pre-labelled the other 186 rows in four batches from my written definitions and decision rule (marked `prelabeled`). I went through each batch and did not change any of its labels. Claude also flagged the rows it was least sure about.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `opinion` | 102 | 49.5% |
+| `analysis` | 56 | 27.2% |
+| `reaction` | 48 | 23.3% |
+| **Total** | 206 | 100% |
 
 **Three hard cases**
 
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
-
 **1.**
-> *The post:*
+> *The post:* "Japan has had high-speed trains since the 1960's and have had zero passenger fatalities. They must be doing something right."
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `opinion`.
 >
-> *I chose, because:*
+> *I chose, because:* `opinion` (a cold label). The first sentence is a checkable fact, but the post only uses it as a springboard for a vague conclusion. Under my rule the fact has to be what supports the claim, and "doing something right" is not a claim the fact can verify.
 
 **2.**
-> *The post:*
+> *The post:* "'One Swift file' except it's two Swift files"
 >
-> *Could have been:*
+> *Could have been:* `reaction` or `analysis`.
 >
-> *I chose, because:*
+> *I chose, because:* `reaction`. It is a checkable correction, but it is delivered as a quip and builds no point. This is one of the cases where my rule does not clearly settle it.
 
 **3.**
-> *The post:*
+> *The post:* "Google doesn't pay for transit. Their private glass was the whole reason the acquisition worked."
 >
-> *Could have been:*
+> *Could have been:* `opinion` or `analysis`.
 >
-> *I chose, because:*
+> *I chose, because:* `opinion`. It names specific things (transit, private fiber, an acquisition), but nothing in the post supports the claim or lets a reader verify it.
+
+All three involve a checkable fact that is not backing a real argument. I expect that to be where the model struggles too.
 
 ---
 
 ## The Training Run
 
-<!-- Your starting model, your settings, and anything you changed and why. -->
+**Base model:** `distilbert-base-uncased`
 
-**Base model:**
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, seed 42, 128 tokens per post. Trained on an Apple Silicon GPU (mps), torch 2.14.1.
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Anything I changed from the defaults, and why:** nothing. I used the defaults.
 
-**Anything I changed from the defaults, and why:**
-
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
-
-
+**Split sizes:** train 144 / validation 31 / test 31 (stratified 70/15/15). Test per label: `opinion` 15, `analysis` 9, `reaction` 7. `reaction` has fewer than about 8 in the test split, so its scores will be jumpy from seed to seed.
 
 ---
 
 ## How I Used AI
 
-<!-- Two specific moments — what you asked, what came back, what you changed.
+**Moment 1: stress-testing my labels**
 
-     ⚠️ Plus disclosure of any pre-labelling. If you had a model pre-label a
-     batch and then read and corrected every one, say that. It's an allowed
-     workflow and disclosing it costs you nothing. Not disclosing it is the
-     problem. -->
+- *What I asked for:* eight new posts that sat on the boundaries of my three labels, which I classified on my own.
+- *What came back:* in round one I matched Claude's labels on 5 of 8; I disagreed on three posts (a bare question that names ARM, an anecdote about "three companies and microservices", and "Rust 1.80 fixed that exact bug"). That showed "names a specific checkable thing" was too loose, because it did not separate naming a product from backing a claim.
+- *What I changed:* I adopted a tighter rule (the checkable thing must be what supports the claim) and added worked examples. Round two matched on 7 of 8, and I kept the rule as written, including treating a verifiable claim with no cited source as `analysis`.
 
-**Moment 1**
+**Moment 2: writing my acceptance criteria**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
-
-**Moment 2**
-
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I asked Claude to write the criteria and numbers for me.
+- *What came back:* it declined to pick the numbers, since they had to be mine. It gave me facts about my data instead: always guessing `opinion` scores about 0.50, and the test split would be about 31 posts. I picked the numbers from options. Claude pointed out that my 0.70 per-label F1 target implied accuracy of about 0.70, so my 0.55 accuracy target could never fail.
+- *What I changed:* I raised the accuracy target to 0.70. I also chose the reason for each number myself from the options Claude gave.
 
 **Pre-labelling disclosure:**
+
+Claude proposed my starting label definitions, pulled the comments from the HN API, and pre-labelled 186 of the 206 rows (marked `prelabeled`). I labelled the other 20 cold. I reviewed each batch and did not change any of the pre-labels.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
