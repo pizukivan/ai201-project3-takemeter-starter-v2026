@@ -3,8 +3,7 @@
 # Copy these from your README so the baseline is judged on exactly the
 # definitions you wrote. baseline.py reads this file.
 #
-# Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+analysis: makes a point backed by something specific and checkable (a number, a named product or event, a source, or a described mechanism) that is what supports the claim
+opinion: a confident claim or judgment with no verifiable support offered, including first-hand experience with unnamed or unspecific details
+reaction: a short response with no developed claim: a quip, a jab, a one-word answer, agreement, or a bare question
