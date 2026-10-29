@@ -1,0 +1,53 @@
+text,label,note
+In the UK at night it's walking pace.  Literally.  The guard gets out and walks and the train follows.  (At least that was the case 25 years ago when I had a very slow train journey.),opinion,prelabeled
+"I've created an app (dinonames.com) that provides information about dinosaur names. Includes quizzes as well. 
+It's subproject of an effort to created a generalized scientific word etymology app based on a multi-language root/combining form dictionary and pronunciation engine. Give it a try and leave a comment",reaction,prelabeled
+"I do, but increasingly, other people I know don't care. They'll just try again, or maybe they'll just give up on one thing and keep using the product.",opinion,prelabeled
+"I actually would like to downgrade my brother printer's firmware.
+I have 3rd party ink cartridges and the printer stopped accepting them after an upgrade.
+In this day and age, looks like new versions of firmware are not fixing problems but introducing limitations.",opinion,prelabeled
+Panasonic (as well as CATL and LG) manufactures the physical lithium-ion battery cells while Tesla assembles them into a complete battery pack. When we talk about car batteries I think people are mostly referring to the battery pack which contains a lot of IP separate from the battery cell. So the supply chain is a bit more complicated its most accurate to say that while Tesla performs some of the manufacturing itself in the US it is not fully vertically integrated.,analysis,prelabeled
+"Anything other than your substack to share?
+
+> Please don't use HN primarily for promotion. It's ok to post your own stuff part of the time, but the primary use of the site should be for curiosity.
+
+https://news.ycombinator.com/newsguidelines.html",analysis,prelabeled
+How steady is the anchored screen? Does it wiggle?,reaction,prelabeled
+Jesus... How the fuck is this even on the frontpage?,reaction,prelabeled
+"Just FYI: You sang his praises. If you ""sang my praises"", that means you celebrated yourself.",analysis,prelabeled
+"I have some feedback and a question on this. dang has previously said that frivilous flagging will result in a user's flags being ignored. I agree one should not comment ""I flagged"" as this carries no information, but if they shouldn't say ""I flagged because X,"" how will it be determined whether the flag is in good faith?
+
+(feel free to detach subthread as not relevant to thread topic at hand)",analysis,prelabeled
+"You confuse ""not wanting the government manipulating everybody's clock"" with ""wanting to manipulate other people's schedule"".",opinion,prelabeled
+"Where you using standard optimized libraries (e.g., NumPy for numerical computation) or did you do everything in Python? This kind of increase of speed seems to indicate extremely sloppy Python programming.",opinion,prelabeled
+"Probably because the post starts ""To ease the transition for new users...""?",analysis,prelabeled
+It was supposed to ask for tool call permission but did not.,analysis,cold
+"Yes. And this is the right tradeoff vs the ossification you saw previously in Java (and we're starting to see now in Python, see the recent ejection of the CPython JIT), especially now when you can say ""GPT, source dive the JDK and figure out which cutting edge is causing the bleeding.""",analysis,prelabeled
+My rough method: check if the warranty is decent enough.,opinion,prelabeled
+I think this is one of those products they just release to get consumers innto their ecosystem before slowly starting to lock people in again.,opinion,cold
+If it is truly free it should use Apache 2.0,opinion,prelabeled
+"I think geographic dispersion of batteries is going to be a big plus. If the ""battery"" is a giant lake or a big plant with a spinning mass, the power has to be transmitted from that facility to the end user over the grid
+
+Putting a ton of smaller chemical batteries at distribution substations means when the grid is at the peak, you can cover that peak without transmitting that power over the transmission system. Putting the battery near the consumer will take a big load off of the transmission system which as much of a bottleneck as the lack of generating facilities",analysis,prelabeled
+"Largely speaking eating is an activity that only involves yourself. Whereas, writing and thinking are largely activities to communicate ideas between yourself and others. Basically it matters more how this is done.",opinion,prelabeled
+"Exactly! That's why the ""pelican riding a bicycle SVG"" test is unfair. It's a token predictor, not an intelligence. What corpus of SVG data has the LLM been trained on? Only in the last 10 years has ""drawing using data"" been in existence. Midjourney can generate you a pelican riding a bicycle artwork easily. But instead, if the test is intentionally based on a task with no corpus, then you get garbage.",opinion,prelabeled
+"I've done AV1 encodes where I was convinced the conversion must have failed in some way for it to be that small, scrubbed through it and it all looks fine, watched through the entire thing to confirm that wasn't the case, just waiting for the shoe to drop, but then to find out, no, it's really just that good.",opinion,prelabeled
+"Google really had developed only 2 good products(not including acquisitions such as YouTube): search and gmail. Their primary cow to milk has been search. The rest (I.e cloud compute) is not really a moat.
+I think we are facing a revolution/rotation where the these companies may start to become just “old businesses”(I.e IBM, AOL).",opinion,cold
+Why do you need to drop to some kind of simulation and memory suppressing? It seems like it would be sufficient to do what many subcultures do today - come up with reasons why my hobbies are the coolest and it’s actually the normies playing their status games who are missing out.,reaction,cold
+"I tend to prefer specialized converters for different file types, so I wonder what advantage a single app offers and where FMX improves on existing tools.",reaction,prelabeled
+"What I don't understand is why they didn't build this project on top of DuckLake instead - from my shallow analysis they vibe coded up a fake Databricks in Python.
+
+Not that I'd use it, I want to avoid Databricks - the Duck ecosystem is far more compelling for my modest needs, and handles local develop a lot better (IMO).",opinion,prelabeled
+"their comp structure is like all other companies, yearly grants with some band of pay with performance mixed in. some stacking, idk the specifics but recruiters will explain it.
+
+it's bad if you're an investor I guess.",opinion,prelabeled
+The opposite makes even more sense to be true.,opinion,prelabeled
+"Reminds me a recent article that went viral on HN, 
+claiming: ""There isn't an easy exploit for this PHP vulnerability""..
+
+https://news.ycombinator.com/item?id=50188948",reaction,prelabeled
+"This only really holds for small divisors (CPUs since about Haswell or so have had early-outs for them). For large divisors, the inverse multiplications are still faster, even more so if you want to use SIMD.",analysis,prelabeled
+"> the aspect of males in female sport, highlights a set of absurd beliefs that are unfortunately quite common on the left
+
+You're playing right into the hands of the kleptocracy by trying to start this dumb-ass discussion up again.",reaction,prelabeled
