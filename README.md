@@ -224,16 +224,18 @@ Against the baseline with my definitions, the trained model is ahead on accuracy
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
+Seed 42 (seeds 7 and 2024 gave the identical matrix). Rows are true labels, columns are what the model guessed. Trained on an Apple Silicon GPU (mps), torch 2.14.1.
+
+| true \ predicted | analysis | opinion | reaction |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| **analysis** | 0 | 9 | 0 |
+| **opinion** | 0 | 15 | 0 |
+| **reaction** | 0 | 7 | 0 |
 
 **My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
+
+The biggest off-diagonal number is 9: all 9 real `analysis` posts were called `opinion` (and all 7 `reaction` posts too), and nothing went the other way. The model did not learn the `analysis`/`opinion` boundary or the `reaction`/`opinion` boundary at all; it labelled every post with my most common label.
+
 
 
 
