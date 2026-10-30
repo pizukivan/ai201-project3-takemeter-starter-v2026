@@ -92,7 +92,7 @@ I tightened this rule after stress-testing it (see How I Used AI). My first vers
 
 **How I labelled them:** I labelled 20 rows cold (no tools, marked `cold` in the note column). Claude pre-labelled the other 186 rows in four batches from my written definitions and decision rule (marked `prelabeled`). I went through each batch and did not change any of its labels. Claude also flagged the rows it was least sure about.
 
-**Counts per label:**
+**Counts per label** (as of unit 5, before the unit 6 relabelling; the changed counts are in The Improvement):
 
 | Label | Count | Share |
 |---|---|---|
@@ -136,7 +136,7 @@ All three involve a checkable fact that is not backing a real argument. I expect
 
 **Anything I changed from the defaults, and why:** nothing. I used the defaults.
 
-**Split sizes:** train 144 / validation 31 / test 31 (stratified 70/15/15). Test per label: `opinion` 15, `analysis` 9, `reaction` 7. `reaction` has fewer than about 8 in the test split, so its scores will be jumpy from seed to seed.
+**Split sizes** (unit 5 run, before the unit 6 relabelling)**:** train 144 / validation 31 / test 31 (stratified 70/15/15). Test per label: `opinion` 15, `analysis` 9, `reaction` 7. `reaction` has fewer than about 8 in the test split, so its scores will be jumpy from seed to seed.
 
 ---
 
@@ -156,7 +156,7 @@ All three involve a checkable fact that is not backing a real argument. I expect
 
 **Pre-labelling disclosure:**
 
-Claude proposed my starting label definitions, pulled the comments from the HN API, and pre-labelled 186 of the 206 rows (marked `prelabeled`). I labelled the other 20 cold. I reviewed each batch and did not change any of the pre-labels.
+Claude proposed my starting label definitions, pulled the comments from the HN API, and pre-labelled 186 of the 206 rows (marked `prelabeled`). I labelled the other 20 cold. I reviewed each batch and did not change any of the pre-labels. In unit 6, a separate Claude instance that never saw my labels acted as the second labeler for criterion 4, and another Claude pass re-applied my `analysis` rule to 143 rows for my improvement (24 changed, marked `prelabeled, relabeled`). Claude also drafted the README sections and verdicts from my numbers and choices, which I then read and edited. I labelled the 30 staff posts myself, with no help.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
@@ -208,16 +208,17 @@ Against the baseline with my definitions, the trained model is ahead on accuracy
 
 ## Run Log — Before
 
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
+Trained on an Apple Silicon GPU (mps), torch 2.14.1, `distilbert-base-uncased`, 3 epochs, lr 2e-5, batch 16. 31 test posts per seed (15 `opinion`, 9 `analysis`, 7 `reaction`). Source: `results_three_seeds_before.json`.
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.70 | 0.484 | 0.484 | 0.484 | MISSED |
+| 2. Every label F1 (lowest label shown) | ≥ 0.70 | 0.000 (`analysis`, `reaction`; `opinion` 0.652) | 0.000 (same) | 0.000 (same) | MISSED |
+| 3. Largest label's share of `labels.csv` | ≤ 70% | 49.5% | 49.5% | 49.5% | MET |
+| 4. Second labeler matches my 20 cold rows | ≥ 14 of 20 | 13 of 20 | 13 of 20 | 13 of 20 | MISSED |
+| 5. Most-confident third minus least-confident third, accuracy (revised from halves, see `criteria.md`) | ≥ 20 points | 50 points (0.7 vs 0.2) | 20 points (0.6 vs 0.4) | 60 points (0.8 vs 0.2) | MET |
+
+Criteria 3 and 4 do not depend on the training seed, so the same value is repeated in each column. Criterion 4 was measured once (see Verdicts).
 
 ### Confusion matrix
 
@@ -243,29 +244,26 @@ The biggest off-diagonal number is 9: all 9 real `analysis` posts were called `o
 
 ## Verdicts and Diagnoses
 
-<!-- MET or MISSED against LAST UNIT's target. The target has to hold across
-     all three seeds, not turn up sometimes. -->
-
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy | ≥ 0.70 | MISSED | 0.484 on all three seeds. That is exactly the share of `opinion` posts in the test split (15 of 31), because the model called every post `opinion`. |
+| 2 | Every label F1 | ≥ 0.70 | MISSED | `analysis` and `reaction` scored 0.000 on every seed, and `opinion` scored 0.652, which is also under 0.70. |
+| 3 | Balance | ≤ 70% | MET | The largest label (`opinion`) is 102 of 206 rows, 49.5%. |
+| 4 | Consistency | ≥ 14 of 20 | MISSED | A second labeler with only my written definitions and rules matched 13 of 20 of my cold labels (65%). The second labeler was a separate Claude instance that never saw my labels. It is an AI, not a person, so this is evidence about how reproducible my rule is, not a human benchmark. |
+| 5 | Confidence (revised) | ≥ 20 points, top third vs bottom third | MET | Gaps of 50, 20 and 60 points. Seed 7 is exactly 20, so it holds but only just. The result is weak: each third has 10 posts, and the model predicted one label for everything, so mean confidence when right (about 0.53) and when wrong (about 0.48) barely differs. |
 
 **Diagnoses**
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+**Criteria 1 and 2 (same cause): the model collapsed onto my biggest label.** The confusion matrix shows all 9 `analysis` and all 7 `reaction` test posts called `opinion`, identically on three seeds. I think two causes are behind this and I cannot fully separate them.
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
+1. *Too few examples for the two smaller labels.* `analysis` has 56 rows and `reaction` has 48 in total, so roughly 39 and 34 landed in training, and DistilBERT with 3 epochs never moved off the majority label. The evidence is that F1 is exactly 0 on those two labels and nonzero only on `opinion`, with no change across seeds.
+2. *A boundary I applied inconsistently.* My agreement report shows 5 of my 9 disagreements with staff were on the `analysis` boundary, and I erred in both directions (calling data-backed posts `hot_take` or `reaction`, and general claims `analysis`). The second labeler matched only 13 of my 20 cold rows, with 4 of the 7 mismatches on posts where I said `analysis` and the second labeler said something lower, plus one the other way.
 
+What points away from pure label noise: the zero-shot baseline reading only label names scored an F1 above 0.38 on all three labels, while my trained model scored 0 on two. So the labels carry some signal, and the model failed to learn it from 144 examples. I treat too few examples as the main cause and labeling inconsistency as a real contributor, and I don't claim to know the split between them. One caution: 186 of the 206 labels were pre-labelled by Claude and I did not correct them, so inconsistency in my training data is partly Claude's application of my rules, not only mine.
 
+**Criterion 4: a labeling problem, measured directly.** 13 of 20 matches against a second labeler is 65%, short of my 70%. The 7 mismatches were rows 3, 4, 5, 9, 17, 19 and 20 of my cold set. In 4 of them I said `analysis` and the second labeler said a lower label, which fits my staff-set pattern of drifting on the `analysis` boundary. This is the clearest evidence in the project that my definition leaves room to apply it two different ways.
+
+**Criterion 5: met, but I wouldn't lean on it.** A model that gives one answer for everything has no real notion of when it is right, so a 20-point gap across 10-post thirds is mostly noise.
 
 ---
 
@@ -370,24 +368,36 @@ Piles: (a) 2, (b) 2, (c) 5. Five of my nine disagreements (1 to 5) were staff `a
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** I relabelled one boundary, `analysis` vs `opinion`, and nothing else (no change to the training settings, the `reaction` label, or my 20 cold rows). I wrote the rule down once more precisely and re-applied it to all 143 pre-labelled rows that were `analysis` or `opinion`. A separate Claude pass did the re-labelling blind to the old labels, in two halves, using this rule:
 
-**Which diagnosis pointed at it:**
+> A comment is `analysis` only if it contains a specific, checkable item (a number or measurement, including the writer's own, a date, version, named product, event or paper used as evidence, a source, link or quote, or a described mechanism with named parts) **and** that item supports the comment's main claim. A name, number or link that is only mentioned in passing, decorates a conclusion, or names the topic does not count. Everything else is `opinion`.
+
+**24 of the 143 rows changed:** 22 went from `analysis` to `opinion` and 2 went from `opinion` to `analysis`. They are marked `prelabeled, relabeled` in the note column. Counts after: `opinion` 122 (59.2%), `analysis` 36 (17.5%), `reaction` 48 (23.3%), total 206.
+
+Most of the 22 were short, bare statements ("It's a draft RFC", "That's for FDM. This is resin.", "your linux distro is built on perl and python") that I had inconsistently called `analysis` before because a specific word was present, even though nothing supported a claim. A few of the changes are arguable: row 1 (the SendCutSend comparison) and the Bushby press-coverage comment could reasonably stay `analysis`.
+
+**What I expect before I run it:** this makes `analysis` smaller (from 56 to 36 rows) while making its definition tighter, so I think the model may still collapse onto `opinion`, or get worse on `analysis`, because it now has even fewer examples of the label it was already missing.
+
+**Which diagnosis pointed at it:** my agreement report. 5 of my 9 staff disagreements were on the `analysis` boundary, in both directions, and a second labeler matched only 13 of my 20 cold rows. Together they pointed at a boundary applied inconsistently rather than at the training settings.
 
 ### Run Log — After
 
+Same model and settings, same three seeds, trained on the relabelled `labels.csv`. Source: `results_three_seeds_after.json`. The test split is different from the "before" run (31 posts: 18 `opinion`, 6 `analysis`, 7 `reaction`, against 15 / 9 / 7 before), because the split is stratified on the labels I changed.
+
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.70 | 0.581 | 0.581 | 0.581 | MISSED |
+| 2. Every label F1 (lowest label shown) | ≥ 0.70 | 0.000 (`analysis`, `reaction`; `opinion` 0.735) | 0.000 (same) | 0.000 (same) | MISSED |
+| 3. Largest label's share of `labels.csv` | ≤ 70% | 59.2% | 59.2% | 59.2% | MET |
+| 4. Second labeler matches my 20 cold rows | ≥ 14 of 20 | 13 of 20 | 13 of 20 | 13 of 20 | MISSED |
+| 5. Most-confident third minus least-confident third (revised) | ≥ 20 points | 50 points (0.9 vs 0.4) | 60 points (0.9 vs 0.3) | 50 points (0.8 vs 0.3) | MET |
+
+Criterion 4 did not change, and could not have: the relabelling left my 20 cold rows alone, so I did not re-measure it.
 
 **Did it help, and how do I know:**
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+No. The model still predicted `opinion` for every test post on every seed. Accuracy went from 0.484 to 0.581, but that is not an improvement: the test split now has 18 `opinion` posts out of 31, and 18/31 is exactly 0.581, so the model scored the share of `opinion` posts it was always going to get. F1 for `analysis` and `reaction` is still 0.000, and macro F1 moved from 0.217 to 0.245 only because `opinion` F1 rose with its larger share. The before and after numbers are also on different test splits, so they are not a clean comparison. What I can say is that making the `analysis` boundary more consistent did not teach the model anything, and it left `analysis` with fewer examples (36 instead of 56), which probably made the data problem I diagnosed worse, as I predicted.
+
 
 
 
@@ -395,15 +405,13 @@ Piles: (a) 2, (b) 2, (c) 5. Five of my nine disagreements (1 to 5) were staff `a
 
 ## What's Still Broken
 
-<!-- For each criterion still missed: what you'd do, and why you stopped. -->
+Criteria 1, 2 and 4 are still missed.
 
+- **Criterion 1 (accuracy ≥ 0.70) and criterion 2 (every label F1 ≥ 0.70):** the model predicts `opinion` for everything. I would add many more `analysis` and `reaction` examples (my 206 rows leave about 25 and 34 of them in training), then retrain, and consider weighting the smaller labels. I stopped after one change because the assignment asks for one, and my relabel was the change my diagnosis supported.
+- **Criterion 4 (second labeler ≥ 14 of 20):** I would have a person, not Claude, label my cold rows from my written rule, then rewrite the `analysis` rule around the disagreements and reapply it. I did not re-measure it after relabelling.
 
-
-**The gap between what I meant my labels to capture and what the model
-learned:**
-<!-- Two sentences. Your confusion matrix is the evidence. -->
-
-
+**The gap between what I meant my labels to capture and what the model learned:**
+I meant `analysis` to mark a post whose checkable specific actually supports its claim, and `reaction` to mark a short response with no claim. The confusion matrix shows the model learned none of that: in both runs, on all three seeds, every `analysis` and every `reaction` test post was labelled `opinion`.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 

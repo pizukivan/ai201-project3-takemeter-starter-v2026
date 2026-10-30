@@ -1,20 +1,20 @@
 text,label,note
 "Is it? He took a plane, surely",reaction,prelabeled
-"SendCutSend has CNC machining but the costs are no where comparable. And they don't have metal 3D printing available either. Surr you can laser cutter some things out of metal, but that's not really comparable to 3D parts.",analysis,prelabeled
+"SendCutSend has CNC machining but the costs are no where comparable. And they don't have metal 3D printing available either. Surr you can laser cutter some things out of metal, but that's not really comparable to 3D parts.",opinion,"prelabeled, relabeled"
 "It is kind of comical how everything is becoming statistical
 
 ""This thing won't hack you 96.6% of the time""",opinion,prelabeled
 "I do, but increasingly, other people I know don't care. They'll just try again, or maybe they'll just give up on one thing and keep using the product.",opinion,prelabeled
 "I'm totally not on the spectrum so I've only watched about 80% of the Plainly Difficult channel on YouTube, but if you want a painless and entertaining, if you're into that kind of thing, way of learning about train signaling and safety, and how safety systems have evolved, I highly recommend it.",opinion,prelabeled
 If it is truly free it should use Apache 2.0,opinion,prelabeled
-"I've noticed this as well, I've been comparing it to 4Chan Greentext memes. Everything is a short punchy sentence, and every sentence has the same ""weight"" to it. There's no flow or rhythm, it's like reading off bullet points.",analysis,prelabeled
+"I've noticed this as well, I've been comparing it to 4Chan Greentext memes. Everything is a short punchy sentence, and every sentence has the same ""weight"" to it. There's no flow or rhythm, it's like reading off bullet points.",opinion,"prelabeled, relabeled"
 """One Swift file"" except it's two Swift files",reaction,prelabeled
 "True, I lived in viper-mode for quite a while.",reaction,prelabeled
 "LLMs have made the internet unreadable. It used to be just Google search results were SEO-gamed empty prose, but now it's every blog post, news article, product announcement ... everything. I've stopped reading basically everything online except user comments on a few websites, but even that won't last forever.",opinion,prelabeled
 In the UK at night it's walking pace.  Literally.  The guard gets out and walks and the train follows.  (At least that was the case 25 years ago when I had a very slow train journey.),opinion,prelabeled
 I'm wondering why don't they use GPS as a redundant data source too.,reaction,prelabeled
 "I've had so much greater success using the built-in AI (""Alexa for search"") that I no longer use the regular search except briefly. I imagine it will be destroyed eventually as regular search was, but for now it's dramatically better.",opinion,prelabeled
-Here we go again... https://killedbygoogle.com/,analysis,prelabeled
+Here we go again... https://killedbygoogle.com/,opinion,"prelabeled, relabeled"
 "their comp structure is like all other companies, yearly grants with some band of pay with performance mixed in. some stacking, idk the specifics but recruiters will explain it.
 
 it's bad if you're an investor I guess.",opinion,prelabeled
@@ -36,7 +36,7 @@ Not every pirate site is dangerous. And this is not even a backdoor just a stand
 What is your point?,reaction,cold
 "Text search is, but normal people dont want text search. Normies want to concierge fetch them perfect answer on first try. LLMs are really good at convincing you they just did that.",opinion,prelabeled
 Yes,reaction,prelabeled
-"Hmm, there are no comments on the page, I think that's a bug I introduced when I removed the "".html"" suffix from the URLs maybe? I'll look into it.",analysis,prelabeled
+"Hmm, there are no comments on the page, I think that's a bug I introduced when I removed the "".html"" suffix from the URLs maybe? I'll look into it.",opinion,"prelabeled, relabeled"
 "Pretty much any memory managed language? Java, Go, Rust, Python, pretty much anything other than C/C++ these days is memory safe for security purposes.",opinion,cold
 "Thanks. It’s macOS' own cookie banner and dick bar.
 
@@ -49,7 +49,7 @@ If we could tweak our bodies we wouldn’t want to eliminate IgE. But we’d wan
 "To the authors: please include a few words giving context on what a GHC is so people don't have to seek that info out before trying to understand what you're saying
 
 Didn't slow me down too much but was still a hassle.",opinion,prelabeled
-"Just FYI: You sang his praises. If you ""sang my praises"", that means you celebrated yourself.",analysis,prelabeled
+"Just FYI: You sang his praises. If you ""sang my praises"", that means you celebrated yourself.",opinion,"prelabeled, relabeled"
 "Who has nvl72s that this isnt absolutely plainly obvious to - and has been for years. Not just that - topology has -always- been relevant to scheduling, and hpc schedulers have always been aware. What a weird blogpost.",opinion,prelabeled
 "Yes. Thank you. This is such a simple thing that should be a part of the operating system, and in the ideal world it would be. This is the perfect problem for the LLM to solve, because the reason it does't exist in the system is a decision by some stupid PM at Apple, and not an actual system constraint.",reaction,prelabeled
 "Because you're poor and need to hunt squirrels to get protein into your diet?
@@ -64,9 +64,9 @@ Amazon/Whole Foods in our area seems consistently unable to pack bananas in a wa
 "It's not Big-O complexity notation. It means ""a few millions"". It's sort of how the word ""sanction"" can mean one thing or a different thing. The textual glyph sequence means a different thing based on context in English. Pretty normal.
 
 I like to call it Big-O Magnitude Notation.",reaction,prelabeled
-Recent and related: https://news.ycombinator.com/item?id=50278497,analysis,prelabeled
+Recent and related: https://news.ycombinator.com/item?id=50278497,opinion,"prelabeled, relabeled"
 "Yeah I think the article would have more weight if he posted the actual discussion, because it's linked elsewhere here and it very clearly shows that Pyon is a nitpicking arsehole.",reaction,prelabeled
-That's for FDM. This is resin.,analysis,prelabeled
+That's for FDM. This is resin.,opinion,"prelabeled, relabeled"
 "Uhh, would it work if I add ""and make it completely new"" to the prompt?",reaction,prelabeled
 "As I understand it, the second site will allow them to resume operating at a limited capacity sooner than 2-4 weeks?
 
@@ -76,7 +76,7 @@ Other than that 2-4 does sound more like hardware lead time rather than time it 
 https://arxiv.org/abs/2603.08163
 
 https://huggingface.co/1Covenant/Covenant-72B",reaction,prelabeled
-It’s a draft RFC.,analysis,prelabeled
+It’s a draft RFC.,opinion,"prelabeled, relabeled"
 And that is how pigs won.,reaction,prelabeled
 "> What you built with it taught us where agentic development is headed, and those learnings are shaping products across Google, including our agent-first platform, Google Antigravity.
 
@@ -133,7 +133,7 @@ https://news.ycombinator.com/newsguidelines.html",analysis,prelabeled
 
 Using an ide is difficult because in order to have enough text on the screen to be useful the font size has to be that micromovements of the head makes reading the text difficult - its fine for 15 minutes but try doing 2 hours of coding on it, and the extra cognitive load of tracking the moving screen and text is too much. Mine sit in the case now, gathering dust.
 
-Watching movies, probably fine. Playing games, probably fine. I don't do those things.",opinion,prelabeled
+Watching movies, probably fine. Playing games, probably fine. I don't do those things.",analysis,"prelabeled, relabeled"
 "(If that's all you want from them, aren't there cheaper solutions? These are ""full VR in glasses form factor"")
 
 Not sure. I mainly still use a Quest 3 as a monitor replacement and had no strong reason to switch. The prescription inserts I got with these weren't quite right for my prescription and I prefer using my actual spectacles. So I've only used them to port stuff to/develop for - and tinker with existing apps (mainly the google supplied stuff as the embargo only lifted yesterday so there wasn't much released for it specifically).",opinion,prelabeled
@@ -237,16 +237,16 @@ StackOverflow would be a super hard business to sustain today.,opinion,prelabele
 but now the same  moderators are on reddit,opinion,prelabeled
 "I have some feedback and a question on this. dang has previously said that frivilous flagging will result in a user's flags being ignored. I agree one should not comment ""I flagged"" as this carries no information, but if they shouldn't say ""I flagged because X,"" how will it be determined whether the flag is in good faith?
 
-(feel free to detach subthread as not relevant to thread topic at hand)",analysis,prelabeled
+(feel free to detach subthread as not relevant to thread topic at hand)",opinion,"prelabeled, relabeled"
 "If you flag, please don't also comment that you did.
 
-https://news.ycombinator.com/newsguidelines.html",analysis,prelabeled
-"After a few days they have been dried and fermented, though.",analysis,prelabeled
-"Cacao powder has been dried and fermented at least, and usually it's roasted too. There is something else done in dutch processed powder. It's probably a very different flavor. I've never thought to eat the seeds raw, but now I will try them at some point.",analysis,prelabeled
-In addition to what others said tethering adds a small amount of latency that's noticeable on things like ssh and rdp.,analysis,prelabeled
+https://news.ycombinator.com/newsguidelines.html",opinion,"prelabeled, relabeled"
+"After a few days they have been dried and fermented, though.",opinion,"prelabeled, relabeled"
+"Cacao powder has been dried and fermented at least, and usually it's roasted too. There is something else done in dutch processed powder. It's probably a very different flavor. I've never thought to eat the seeds raw, but now I will try them at some point.",opinion,"prelabeled, relabeled"
+In addition to what others said tethering adds a small amount of latency that's noticeable on things like ssh and rdp.,opinion,"prelabeled, relabeled"
 "> `w_doto` for `cursorOffset`
 
-Well, sometimes we call the cursor ""the dot.""",analysis,prelabeled
+Well, sometimes we call the cursor ""the dot.""",opinion,"prelabeled, relabeled"
 Weak measurement experiments have shown that one can observe the whole path of a particle in a double-slit experiment and there is nothing wave-like in the results.,analysis,cold
 My rough method: check if the warranty is decent enough.,opinion,prelabeled
 Trickle down economics does not work. Tax the super rich.,opinion,prelabeled
@@ -318,7 +318,7 @@ Girl in Atlanta got chopped into pieces on a DoorDash delivery. I predict the sa
 
 So, quite a different beast.
 
-Edit: It was in 2012.",opinion,prelabeled
+Edit: It was in 2012.",analysis,"prelabeled, relabeled"
 "My initial experience with Perplexity was it citing AI blog spam as a primary source so consistently I immediately dropped my subscription. (this was over a year ago, I haven't re-evaluated them since)",opinion,prelabeled
 "I agree that they are a bit shady, but private benchmarks are the only way to prevent benchmaxxing",opinion,cold
 "It wasn't stated that it would be funded by income taxes. There is a long list of government services that are funded mainly by usage fees.
@@ -328,7 +328,7 @@ That said, I'm not convinced of this idea either. But if you're not going to enf
 "What I don't understand is why they didn't build this project on top of DuckLake instead - from my shallow analysis they vibe coded up a fake Databricks in Python.
 
 Not that I'd use it, I want to avoid Databricks - the Duck ecosystem is far more compelling for my modest needs, and handles local develop a lot better (IMO).",opinion,prelabeled
-"I feel like that may be more of an issue with how Python's C API is designed, leaking basically most of its internals, and then having to remember to manage (increment/decrement) Python objects correctly.",analysis,prelabeled
+"I feel like that may be more of an issue with how Python's C API is designed, leaking basically most of its internals, and then having to remember to manage (increment/decrement) Python objects correctly.",opinion,"prelabeled, relabeled"
 "Author is here. Capo also has SDKs for all 400+ AWS services, in idiomatic python: https://capo-sdk.dev/",reaction,prelabeled
 If you are regering to the mess that is python or javascript in beg to differ,reaction,cold
 "Printing a string in python changed exactly twice. This is a 17 years old question about printing.
@@ -350,7 +350,7 @@ That is always what happens when you get rid of the experts. Ruthless mediocrity
 - Java and Python likely used too much resources for a once-in-a-while used GUI
 
 Irrational hatred aside, that's literally what PHP was designed for.",analysis,prelabeled
-"Yes. And this is the right tradeoff vs the ossification you saw previously in Java (and we're starting to see now in Python, see the recent ejection of the CPython JIT), especially now when you can say ""GPT, source dive the JDK and figure out which cutting edge is causing the bleeding.""",analysis,prelabeled
+"Yes. And this is the right tradeoff vs the ossification you saw previously in Java (and we're starting to see now in Python, see the recent ejection of the CPython JIT), especially now when you can say ""GPT, source dive the JDK and figure out which cutting edge is causing the bleeding.""",opinion,"prelabeled, relabeled"
 "> Makes it seamless for trip planning.
 
 Trip planning is the most often used use-case for agents/bots I see in marketing. I'm lucky to travel once a year, but if I did have a trip, I wouldn't feel comfortable letting an LLM take the wheel. Too many variables for wrong flight or room, closed locations in itinerary, etc.
@@ -368,7 +368,7 @@ I'm sorry but I'm not sure I understand how a calculator that isn't 100% accurat
 (But it's not remotely like come-from.)
 
 P.S. in re the other response, ""unless"" is ""if not"". ""until"" is ""while not"".",analysis,prelabeled
-your linux distro is built on perl and python,analysis,prelabeled
+your linux distro is built on perl and python,opinion,"prelabeled, relabeled"
 "True for many others right? PHP, Python, JS, Lua..what if some finds an old exploit in Perl, oh heck.",opinion,prelabeled
 "We've adopted a zero-risk posture at our org. We've taken down numerous amounts of services over the last few weeks related to PHP, Node, and Python until things are properly vetted.
 
@@ -386,7 +386,7 @@ We did this many years ago for remote First Nations sites with an energy monitor
 
 If you want a trusted public model, we need to start a foundation that does it. The Linux of AI.
 
-You’re going to need some serious money though.",analysis,prelabeled
+You’re going to need some serious money though.",opinion,"prelabeled, relabeled"
 "Subsidies to keep a failing industry alive are, reasonably, seen as a different phenomenon than subsidies to help a successful industry beat its international competitors. If Americans want to toss a bunch of money into a hole to ensure people can keep buying F-150s as commuter cars, that's just not a big problem for anyone else.",opinion,prelabeled
 "How much should you spend on security?
 
@@ -399,14 +399,14 @@ In the case of GoF, if it wasn't somehow profitable, then the research would lik
 "> the aspect of males in female sport, highlights a set of absurd beliefs that are unfortunately quite common on the left
 
 You're playing right into the hands of the kleptocracy by trying to start this dumb-ass discussion up again.",reaction,prelabeled
-"There has been plenty of press coverage of how Bushby was unable to see the child, because the mother took the child to Northern Ireland where Bushby was unable to follow due to his ex-military status.",analysis,prelabeled
+"There has been plenty of press coverage of how Bushby was unable to see the child, because the mother took the child to Northern Ireland where Bushby was unable to follow due to his ex-military status.",opinion,"prelabeled, relabeled"
 "to AI verbosity and weird use of diction is natural, to humans it makes it hard to parse. The number of time i start reading long winded AI written design docs, and i just can't get into the flow after reading a few sentences and have to keep re reading certain sentences.",opinion,prelabeled
 "I mean, how fast do you need it to be?  If you're running lambdas with cold starts all day long yes, java is a problem.  Otherwise, occasional restarts of java services are quick assuming they're probably stateless.  A few seconds? Whats the problem that needs to be solved here?",opinion,prelabeled
 "Bushby's walk has been extensively covered in the press (and in his own book about the Americas leg). Mexico served as his base while waiting for visas, permissions, and sponsorship, so he was flying back there and then, once he could continue, he flew back to the exact coordinates he had left off and started walking again from there.",analysis,prelabeled
 "It's an interesting arbitrage question. When I do a search to see what they cost, they aren't that cheap: approximately $20k USD for a starter (Dolphin Mini). And, then about $50k USD for a minivan (M9). I was wondering if there was a weird lease model which could work for independent Mexican residents or expats, but I don't think there is.",analysis,prelabeled
 I think this is one of those products they just release to get consumers innto their ecosystem before slowly starting to lock people in again.,opinion,cold
-"Probably because the post starts ""To ease the transition for new users...""?",analysis,prelabeled
-"Yes, quite a bit, but you can lookup OlMo from allen.ai for starts",analysis,prelabeled
+"Probably because the post starts ""To ease the transition for new users...""?",opinion,"prelabeled, relabeled"
+"Yes, quite a bit, but you can lookup OlMo from allen.ai for starts",opinion,"prelabeled, relabeled"
 My eye sight declined when I started using XR regularly. However it was also at the age where my eye sight was probably going to decline anyway!,opinion,prelabeled
 "I'd interpret the ""minus first N per year"" to mean that you get a few ""free"" fires per year - but after that your habits filling your closets with oily rags, overloading electrical extension cords, and smoking in bed will start to cost you.",opinion,prelabeled
 "I never use LLM to write anything, but unfortunately now whenever I am writing something, I am worried, am I sounding like an LLM? Using certain words, makes me worry, it will make my writing like an LLM, so I have started to avoid some words in my writing.
@@ -416,7 +416,7 @@ I think it's because the FBI had tapes proving that King was involved in rape.,o
 "This is an incredibly partisan take and I don't think it's appropriate for Hacker News, which is not supposed to include flamebait comments.
 
 Ah yes, white people are oblivious to racism and black people are systemically abused. This is just the standard Democrat narrative. And it's fine to believe that, but again, it's far from an objective non-partisan, non-flame-baity take.",opinion,prelabeled
-this is interesting. can you share a bit more about your process? I see your visible GitHub activity starts early October 2026,analysis,prelabeled
+this is interesting. can you share a bit more about your process? I see your visible GitHub activity starts early October 2026,opinion,"prelabeled, relabeled"
 Why do you need to drop to some kind of simulation and memory suppressing? It seems like it would be sufficient to do what many subcultures do today - come up with reasons why my hobbies are the coolest and it’s actually the normies playing their status games who are missing out.,reaction,cold
 "lmao, removing glm 5.3 flash... good thing i started blocking them on twitter, can't trust them anymore",reaction,cold
 "> Since this discovery, the Dream research team has been sharing updates and collaborating on an investigation with Palo Alto Networks, the vendor of the firewall in question. More information is available on the Palo Alto Networks website. Additional details are now included in the post itself.",analysis,cold

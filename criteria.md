@@ -99,6 +99,10 @@ Labeling `opinion` vs `analysis` is a judgment call on short, ambiguous Hacker N
 
 I picked this on purpose as an ambitious target. It may be hard to hit with about 31 test posts, and I'd learn from missing it.
 
+> **Revised in unit 6:** on the test split, the third of predictions with the highest model confidence is at least 20 percentage points more accurate than the third with the lowest confidence.
+>
+> **Why revised:** the original compared the top and bottom *halves*, but `results.json` only records accuracy for the most- and least-confident *thirds*. I couldn't produce a verdict from the halves version at all, so it was unmeasurable as written. The target of 20 points is unchanged.
+
 ---
 
 <!-- ─────────────────────────────────────────────────────────────────────────
